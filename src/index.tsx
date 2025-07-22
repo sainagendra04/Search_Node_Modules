@@ -1,19 +1,28 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import GuestList from './State/guestList';
+// import UserSearch from './State/userSearch';
+// import UserSearch1 from './Refs/userSearch';
+import { Provider } from 'react-redux';
+import {store} from './ReduxState';
+import RepositoriesList from './components/RepositoriesList';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const App = () => {
+  // return (
+  //   <div>
+  //     <GuestList/>
+  //     <UserSearch1/>
+  //   </div>
+  // );
+  return (
+        <Provider store={store}>
+            <div>
+                <h1>Search for the react Package</h1>
+                <RepositoriesList />
+            </div>
+        </Provider>
+        
+    ); 
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(<App />);
